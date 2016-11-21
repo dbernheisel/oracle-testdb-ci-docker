@@ -10,7 +10,7 @@ Two Docker setups:
 
 ## Usage
 
-1) **test-base**
+**test-base**
 
 1) Download Oracle Database 12c binaries and place them into the `docker-oracle-test-base` folder.
 
@@ -18,11 +18,11 @@ Two Docker setups:
 
 1) [Optional] You may want to tag it and push it to your private repo at this point.
 
-1) **test-db**
+**test-db**
 
-1) Adjust the test-db variables if you'd like. Make sure the ORACLE_PDB1 variable is the same in `create_test_user.sql` and the Dockerfile.
-  
-1) cd into the test-db directory, and run `docker build -t oracle12c-test .`
+1) Adjust the test-db Dockerfile environment variables if you'd like. Make sure the ORACLE_PDB1 variable is the same in `create_test_user.sql` and the Dockerfile.
+
+1) cd into the test-db directory, and run `docker build -t oracle12c-test-db .`
 
 1) That should be it. Now it just depends on what you want to do. See my sample
 files for `gitlab-ci` or `docker-compose`. I was building a Rails application
