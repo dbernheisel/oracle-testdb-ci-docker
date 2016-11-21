@@ -5,26 +5,22 @@ I had a challenge with getting an application to run in my CI environment (GitLa
 ## What is this?
 
 Two Docker setups:
-1) `docker-oracle-test-base` is the original instructions at https://github.com/oracle/docker-images/tree/master/OracleDatabase but modified to not have a VOLUME instruction, so that the pluggable database is persisted to the image.
-2) `docker-oracle-test-db` is another image that can be used for running tests within a CI environment. It always starts empty, but does not take 30min to initialize the database; instead it takes about 1min.
+1. `docker-oracle-test-base` is the original instructions at https://github.com/oracle/docker-images/tree/master/OracleDatabase but modified to not have a VOLUME instruction, so that the pluggable database is persisted to the image.
+2. `docker-oracle-test-db` is another image that can be used for running tests within a CI environment. It always starts empty, but does not take 30min to initialize the database; instead it takes about 1min.
 
 ## Usage
 
 **test-base**
 
-1) Download Oracle Database 12c binaries and place them into the `docker-oracle-test-base` folder.
-
-1) cd into the test-base directory, and run `docker build -t oracle/database:12.1.0.2-ee .`
-
-1) [Optional] You may want to tag it and push it to your private repo at this point.
+1. Download Oracle Database 12c binaries and place them into the `docker-oracle-test-base` folder.
+1. cd into the test-base directory, and run `docker build -t oracle/database:12.1.0.2-ee .`
+1. [Optional] You may want to tag it and push it to your private repo at this point.
 
 **test-db**
 
-1) Adjust the test-db Dockerfile environment variables if you'd like. Make sure the ORACLE_PDB1 variable is the same in `create_test_user.sql` and the Dockerfile.
-
-1) cd into the test-db directory, and run `docker build -t oracle12c-test-db .`
-
-1) That should be it. Now it just depends on what you want to do. See my sample
+1. Adjust the test-db Dockerfile environment variables if you'd like. Make sure the ORACLE_PDB1 variable is the same in `create_test_user.sql` and the Dockerfile.
+1. cd into the test-db directory, and run `docker build -t oracle12c-test-db .`
+1. That should be it. Now it just depends on what you want to do. See my sample
 files for `gitlab-ci` or `docker-compose`. I was building a Rails application
 that needed Oracle, so some of my samples lend itself to that environment.
 
