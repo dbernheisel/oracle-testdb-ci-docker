@@ -1,0 +1,9 @@
+before_script:
+  - docker-compose build app
+
+test:
+  script:
+    - docker-compose up -d
+    - docker-compose exec app bundle exec rspec
+    - docker-compose exec app bundle exec teaspoon
+    - docker-compose down
