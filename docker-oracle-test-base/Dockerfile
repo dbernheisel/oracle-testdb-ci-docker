@@ -108,5 +108,4 @@ EXPOSE 1521 5500
 # Define default command to start Oracle Database.
 CMD $ORACLE_BASE/$RUN_FILE
 
-
 # docker build -t oracle/database:12.1.0.2-ee .

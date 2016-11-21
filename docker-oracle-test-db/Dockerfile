@@ -32,5 +32,5 @@ USER oracle
 EXPOSE 1521 5500
 ENTRYPOINT /home/oracle/startDbAndWait.sh
 
-# docker build -t oracle12c-test .
-# docker run --name oracle12c --rm -i -t oracle12c-test
+# docker build -t oracle12c-test-db .
+# docker run --name oracle12c --rm -i -t oracle12c-test-db

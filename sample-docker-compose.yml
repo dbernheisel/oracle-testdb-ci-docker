@@ -8,7 +8,7 @@ services:
     ports:
       - "5500:5500" # Oracle OEM Express
 
-  # Below is a sample setup for a Ruby/Rails app. May need to adjust to your liking.
+  # Below is a sample setup for a Ruby/Rails app. May need to adjust to your needs.
   app:
     build: .
     command: /bin/bash docker-start.sh # do nothing
@@ -28,23 +28,24 @@ services:
       - oracle
 
   bundler_cache:
-    image: youapp_app # name of above image after docker-compose builds it
+    image: yourapp_app # name of above image after docker-compose builds it
     volumes:
       - /bundle
     command: /bin/bash docker-start.sh
 
 # To run Oracle locally, perform these steps:
-# docker pull your_private_registry:oracle-database-12.1.0.2-ee-testdb
-# docker run --name oracle12c-test -p 1521:1521 --rm -i -t your_private_registry:oracle12c-test-db
-# you should have Oracle ready at this point, and can either:
-# 1) Run your app on your machine natively.
-# 2) Run your app within Docker.
+# `docker pull your_private_registry:oracle-database-12.1.0.2-ee-testdb`
+# `docker run --name oracle12c-test -p 1521:1521 --rm -i -t your_private_registry:oracle12c-test-db`
+#
+# You should have Oracle ready at this point, and can either:
+#   1) Run your app on your machine natively.
+#   2) Run your app within Docker.
 # I recommend #1. It's less complicated. #2 is mainly for CI testing.
 # The test-db image does not persist data on your machine, so it's only suitable
 # for running tests from clean slate.
 
-# To run all of them, perform these steps:
-# 1) Make sure you have a build of the app service first. `docker-compose build app`
+# To run all of the images, perform these steps:
+# 1) `docker-compose build app`. Make sure you have a build of the app service.
 # This is because bundler will be based on the app image which needs to be
 # present before itself can be built, and then volume-out the bundler cache.
 # 2) `docker-compose up`
